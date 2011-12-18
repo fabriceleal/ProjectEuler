@@ -23,12 +23,13 @@
   ; Remove all multiples of elem in ls (including elem)
   ; Next iteration
   ; Return transformed
-  (let [transformed '()]
-    (while (not (nil? (first ls)))
-			(let [head (first ls)]
-			    (if (nil? head)
-			      transformed
-			      transformed)))))
+  (loop [transformed '() pr-ls ls]
+    (let [head (first pr-ls)]
+      (if (not (nil? head)) 
+        (recur 
+          (concat (list head) transformed) 
+          (filter #(not (is-divisor-of head %)) pr-ls))
+        transformed))))
 
 
 (defn primes [top]
@@ -37,4 +38,4 @@
     ; Use 
     (primes-iteration full)))
 
-(reduce + (primes 2000000))
+(reduce + (primes 20))
