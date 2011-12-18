@@ -13,5 +13,4 @@
   (aux-multiples n 1 1000 '()))
 
 ; Sum the items in the list of multiples of 3 and 5, remove duplicates
-(defn solve []
-  (apply + (distinct (concat (multiples 3) (multiples 5)))))
+(apply + (distinct (concat (multiples 3) (multiples 5))))
