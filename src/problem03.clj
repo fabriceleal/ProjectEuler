@@ -23,7 +23,6 @@
 
 ; Find first greatest prime factor of number ...
 (defn get-first-prime-factor [n]
-  (first (divisors n)))
+  (first (filter is-prime? (divisors n))))
 
-
-;(get-first-prime-factor 600851475143)
+(get-first-prime-factor 600851475143) ; 600851475143
