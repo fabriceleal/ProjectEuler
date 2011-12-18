@@ -38,4 +38,6 @@
     ; Use 
     (primes-iteration full)))
 
-(reduce + (primes 20))
+(reduce + 
+        (filter is-prime? 
+                (lazy-stream-inc 2 2000000)))
