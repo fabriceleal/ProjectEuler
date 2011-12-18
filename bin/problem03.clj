@@ -2,18 +2,16 @@
   (:require clojure.contrib.math))
 
 ; Decreasing lazy stream, stop at 1
-(defn lazy-stream 
-  ([start]
-    (lazy-stream start 2))
-  ([start stop]
-    (if (< start stop)
+(defn lazy-stream [start]
+  (if 
+    (< start 2) 
     '()
-    (lazy-seq (cons start (lazy-stream (- start 1) stop))))))
+    (lazy-seq (cons start (lazy-stream (- start 1))))))
 
 ; Increasing lazy stream, start at 2
 (defn lazy-stream-inc
   ([stop]
-    (lazy-stream-inc 2 stop))
+  (lazy-stream-inc 2 stop))
   ([nbr stop]
   (if (> nbr stop)
     '()
@@ -40,5 +38,6 @@
     (if (nil? fprimediv)
       (list n)
       (concat (list fprimediv) (get-factors (/ n fprimediv))))))
+  
 
 (reduce max (get-factors 600851475143)) ; 600851475143
