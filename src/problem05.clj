@@ -19,13 +19,25 @@
   ([] (infinite-stream 1))
   ([start] (lazy-seq (cons 1 (infinite-stream (inc start))))))
 
-(defn get-first-with-divisors [start divs]
-  (loop [start 1]
-    (let [real (divisors start)]
+; Brute force by dividing, incrementing.
+(defn get-first-with-divisors [start incr divs]
+  (loop [s start]
+    (let [real (divisors s)]
       (if (list-contains-items real divs)
-        start
-        (recur (inc start))
+        s
+        (recur (+ incr s))
         ))))
 
-;(get-first-with-divisors 2 (range 2 11))
-(get-first-with-divisors 20 (reverse (range 2 20)))
+; Brute force by multiplying :)
+; If 20 is divisor, so it is 2 4 5 10
+; 19 is prime
+; If 18 is divisor, so it is 2 3 6 9
+; 17 is prime
+; If 16 is divisor, so it is 2 4 8
+; if 15 is divisor, so it is 3 5
+; If 14 is divisor so it is 2 7
+; 13 is prime
+; If 12 is divisor so it is 2 3 4 6
+; 11 is prime
+
+;(get-first-with-divisors 20 20 (reverse (range 10 21)))
