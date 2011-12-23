@@ -27,4 +27,5 @@
         (recur (inc start))
         ))))
 
-(get-first-with-divisors 2 (range 2 20))
+;(get-first-with-divisors 2 (range 2 11))
+(get-first-with-divisors 20 (reverse (range 2 20)))
