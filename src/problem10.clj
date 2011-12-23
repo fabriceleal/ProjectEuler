@@ -38,6 +38,18 @@
     ; Use 
     (primes-iteration full)))
 
-(reduce + 
-        (filter is-prime? 
-                (lazy-stream-inc 2 2000000)))
+;(reduce + 
+;        (filter is-prime? 
+;                (lazy-stream-inc 2 2000000)))
+
+(ns tokenize
+  (:import (java.io BufferedReader FileReader)))
+
+;(defn process-file [file-name line-func line-acc]
+;  (with-open [rdr (BufferedReader. (FileReader. file-name))]
+;    (reduce line-func line-acc (line-seq rdr))))
+
+;(defn process-line [acc line]
+;  (+ acc 1))
+
+;(prn (process-file "primes.txt" process-line 0))
