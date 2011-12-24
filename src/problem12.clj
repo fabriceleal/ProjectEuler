@@ -5,9 +5,14 @@
 ; Lazy list of triangular nbrs ...
 (defn triang  
   ([]
-    (triang 1))
-  ([n]
-    (lazy-seq (cons (reduce + (range 1 (inc n))) (triang (inc n))))))
+    (triang 1 0))
+  ([n]    
+    (triang n (reduce + (range 1 n))))
+  ([n acc]
+    (let [newval (+ acc n)]
+      (lazy-seq
+        (cons newval
+        (triang (inc n) newval))))))
 
 ; Lazy list of 
 (defn find-first-over-x [v]
