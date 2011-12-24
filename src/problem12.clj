@@ -1,14 +1,20 @@
 (ns problem12)
 
+(refer 'problem03)
 
 ; Lazy list of triangular nbrs ...
 (defn triang  
   ([]
-    (concat 1 (triang 2 1)))
-  ([n sum] 
-    (let [curr (+ n sum)]
-      (lazy-seq (cons curr (triang (+ n 1) curr)))
-  )))
+    (triang 1))
+  ([n]
+    (lazy-seq (cons (reduce + (range 1 (inc n))) (triang (inc n))))))
 
 ; Lazy list of 
-(first (filter #() (triang))) 
+(defn find-first-over-x [v]
+  (loop [ttt (triang 50000)]
+    (let [head (first ttt)]
+      (if (< v (count (divisors head)))
+        head
+        (recur (rest ttt))))))
+
+(find-first-over-x 498) ; divisors don't include neither 1 nor the nbr itself 
