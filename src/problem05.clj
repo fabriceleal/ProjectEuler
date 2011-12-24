@@ -19,7 +19,7 @@
   ([] (infinite-stream 1))
   ([start] (lazy-seq (cons 1 (infinite-stream (inc start))))))
 
-; Brute force by dividing, incrementing.
+; Brute force by dividing, incrementing. Forget this.
 (defn get-first-with-divisors [start incr divs]
   (loop [s start]
     (let [real (divisors s)]
@@ -43,10 +43,13 @@
 ; If 12 is divisor so it is 2 3 4 6
 ; 11 is prime
 
-(get-first-with-divisors 20 20 (list 20 19 18 17 15 16 14 13 12 11))
+;(get-first-with-divisors 20 20 (list 20 19 18 17 15 16 14 13 12 11))
 
-(defn least-commmon-multiplier [items]
-  )
+(defn serial-factorization [nbrs]
+  (loop [to-parse nbrs acc '()]
+    (let [head (first to-parse)]
+      (if (nil? head)
+        acc
+        (recur (rest to-parse) (concat acc (list (get-factors head))))))))
 
-(defn greatest-common-divisor [items]
-  )
+(serial-factorization '(11 12 13 14 15 16 17 18 19 20))
