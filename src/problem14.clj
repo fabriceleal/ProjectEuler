@@ -19,8 +19,7 @@
         (recur (inc (* 3 i)) (inc acc))
         ))))
 
-(reduce 
-  
+(reduce   
   (fn[acc v] 
     (if (> (second v) (second acc))
       v

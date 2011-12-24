@@ -2,3 +2,4 @@ bin/*
 bin/
 .settings/
 .settings/*
+*\ccw.repl.cmdhistory.prefs
