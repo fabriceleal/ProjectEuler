@@ -12,7 +12,7 @@
 	(map
 	  (fn[x] (reduce * x))
 		(partition 
-		  5
+		  5 1
 		  (map 
 		  (fn[x] (- (int x) 48))
 		  *big*))))
