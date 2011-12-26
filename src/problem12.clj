@@ -1,6 +1,7 @@
 (ns problem12)
 
 (refer 'problem03)
+(refer 'problem05)
 
 ; Lazy list of triangular nbrs ...
 (defn triang  
@@ -14,13 +15,23 @@
         (cons newval
         (triang (inc n) newval))))))
 
+
+; Counts the number of divisors that a number has.
+; http://www.ehow.com/how_5169234_calculate-number-divisors.html
+(defn count-divisors [x]
+  (reduce
+    *
+    (map 
+      (fn[x] (inc x)) 
+      (vals (decompose-list (get-factors x))))))
+
 ; Lazy list of 
 (defn find-first-over-x [v]
-  (loop [ttt (triang 500000000)]
+  (loop [ttt (triang 5000000000)]
     (let [head (first ttt)]
-      (if (< v (count (divisors head)))
+      (if (< v (count-divisors head))
         head
         (recur (rest ttt))))))
 
-;(find-first-over-x 498) ; divisors don't include neither 1 nor the nbr itself 
+(find-first-over-x 498) ; divisors don't include neither 1 nor the nbr itself 
 
