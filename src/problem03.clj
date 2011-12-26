@@ -41,4 +41,4 @@
       (list n)
       (concat (list fprimediv) (get-factors (/ n fprimediv))))))
 
-(reduce max (get-factors 600851475143)) ; 600851475143
+;(reduce max (get-factors 600851475143)) ; 600851475143
