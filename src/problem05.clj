@@ -74,14 +74,6 @@
 ;        
 ;        ))))
 
-; Make hash, prime => count, with the max ocorrences of a number in a list
-(defn decompose [list-list-items]
-  (loop [ret-hash {} to-parse list-list-items]
-    (let [head (first to-parse)]
-      (if (nil? head)
-        ret-hash
-        (recur (decompose-list head ret-hash) (rest to-parse))))))
-
 (defn decompose-list 
   ([list-items] 
     (decompose-list list-items {}))
@@ -99,6 +91,15 @@
                 (count (filter #(=% head) to-parse)) 
                 (get acc head 0)))))
         ))))
+
+; Make hash, prime => count, with the max ocorrences of a number in a list
+(defn decompose [list-list-items]
+  (loop [ret-hash {} to-parse list-list-items]
+    (let [head (first to-parse)]
+      (if (nil? head)
+        ret-hash
+        (recur (decompose-list head ret-hash) (rest to-parse))))))
+
 
 ; http://en.wikipedia.org/wiki/Least_common_multiple
 (reduce 
